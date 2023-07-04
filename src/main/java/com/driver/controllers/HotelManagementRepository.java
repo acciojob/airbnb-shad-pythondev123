@@ -16,18 +16,27 @@ public class HotelManagementRepository {
     private String hotelNameWithMostFacilities= "";
 
 
-    public boolean addHotel(Hotel hotel){
+    public String addHotel(Hotel hotel){
 
-            hotelDb.put(hotel.getHotelName(), hotel);
-            return true;
-
-    }
-    public Optional<Hotel> getByName(String hotelname){
-        if(hotelDb.containsKey(hotelname)){
-            return Optional.of(hotelDb.get(hotelname));
+        if(hotel == null || hotel.getHotelName() == null) {
+            return "FAILURE";
+        }else if(hotelDb.containsKey(hotel.getHotelName())) {
+            return "FAILURE";
         }
-        return Optional.empty();
+
+        String name = hotel.getHotelName();
+
+        hotelDb.put(name, hotel);
+
+        return "SUCCESS";
+
     }
+//    public Optional<Hotel> getByName(String hotelname){
+//        if(hotelDb.containsKey(hotelname)){
+//            return Optional.of(hotelDb.get(hotelname));
+//        }
+//        return Optional.empty();
+//    }
     public int addUser(User user){
         userDb.put(user.getaadharCardNo(),user);
         return user.getaadharCardNo();

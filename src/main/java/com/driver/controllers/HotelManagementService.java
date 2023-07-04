@@ -12,15 +12,7 @@ import java.util.UUID;
 public class HotelManagementService {
     HotelManagementRepository repo= new HotelManagementRepository();
     public String addHotel(Hotel hotel){
-        Optional<Hotel> hotelOpt= repo.getByName(hotel.getHotelName());
-        if(hotelOpt.isPresent()){
-            return "Failure";
-        }
-        if(hotel.getHotelName().isEmpty()){
-            return "Failure";
-        }
-        repo.addHotel(hotel);
-        return "Success";
+        return repo.addHotel(hotel);
     }
     public int addUser(User user){
         return repo.addUser(user);
